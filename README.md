@@ -92,10 +92,6 @@ A detailed and beginner friendly guide on how to deploy this project on a free i
 
 Contributions are welcome.
 
-## Contact
-
-You can contact me [@odysseusmax](https://tx.me/odysseusmax).
-
 ## License
 
 Code released under [The GNU General Public License](LICENSE).
