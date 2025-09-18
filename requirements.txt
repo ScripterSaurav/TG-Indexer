@@ -2,6 +2,8 @@ aiohttp
 aiohttp-jinja2
 telethon
 cryptg
-pillow
+pillow==9.5.0
 aiohttp_session[secure]
 python-dotenv
+tgcrypto
+jinja2==3.0.3
