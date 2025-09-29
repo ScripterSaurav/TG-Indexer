@@ -2,7 +2,12 @@
 
 > Python Web App which indexes a telegram channel(or a chat) and serves its files for download.
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](.) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+## To-Do 📚
+
+- [ ] Implement multi-client feature
+- [ ] Cache System
+
+
 
 ## Highlights
 
@@ -83,15 +88,3 @@ This is the general format, change the values of corresponding fields as your re
 ```bash
 python3 -m app
 ```
-
-## Deploy Guide (Repl.it)
-
-A detailed and beginner friendly guide on how to deploy this project on a free instance of <https://repl.it> can be found [here](./repl-config/replit-deploy-guide.md).
-
-## Contributions
-
-Contributions are welcome.
-
-## License
-
-Code released under [The GNU General Public License](LICENSE).
