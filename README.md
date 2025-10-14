@@ -6,6 +6,7 @@
 
 - [ ] Implement multi-client feature
 - [ ] Cache System
+- [ ] channel chat lock functionality
 
 
 
