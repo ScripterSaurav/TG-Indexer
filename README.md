@@ -5,8 +5,9 @@
 ## To-Do 📚
 
 - [ ] Implement multi-client feature
-- [ ] Cache System
+- [ ] Cache System support
 - [ ] channel chat lock functionality
+- [ ] channel chat Hide Support
 
 
 
