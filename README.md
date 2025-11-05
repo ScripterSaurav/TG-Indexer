@@ -1,13 +1,13 @@
-# Telegram Index
+# Telegram Indexer
 
-> Python Web App which indexes a telegram channel(or a chat) and serves its files for download.
+> Python Web App which indexes a telegram channel (or a chat) and serves its files for download and stream over Https.
 
 ## To-Do 📚
 
-- [ ] Implement multi-client feature
+- [ ] Implement multi-client support
 - [ ] Cache System support
-- [ ] channel chat lock functionality
-- [ ] channel chat Hide Support
+- [ ] channel lock functionality
+- [ ] channel card Hide Support
 
 
 
