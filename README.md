@@ -120,9 +120,9 @@ The web interface will be available at `http://localhost:8080` (or your configur
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
-### 🧑‍💻 Author & Credits
+## 🧑‍💻 Author & Credits
 
-**Original Repository:** [odysseusmax/tg-index](https://github.com/odysseusmax/tg-index) 
+**Credit:** [odysseusmax/tg-index](https://github.com/odysseusmax/tg-index) 
 
 **Fixed & Modified:** ✨ by [Me](#)
 
