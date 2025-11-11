@@ -10,10 +10,9 @@
 
 ## 📋 To-Do List
 
-- [ ] Implement multi-client support
+- [ ] Implement multi-client worker bots support
 - [ ] Add cache system support
 - [ ] Implement channel lock functionality
-- [ ] Add channel card hide support
 
 ## ✨ Features
 
