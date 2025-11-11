@@ -57,7 +57,7 @@ logo_folder = Path(os.path.join(tempfile.gettempdir(), "logo"))
 logo_folder.mkdir(parents=True, exist_ok=True)
 
 username = os.environ.get("TGINDEX_USERNAME", "")
-password = os.environ.get("PASSWORD", "")
+password = os.environ.get("TGINDEX_PASSWORD", "")
 SHORT_URL_LEN = int(os.environ.get("SHORT_URL_LEN", 3))
 authenticated = bool(username and password)
 SESSION_COOKIE_LIFETIME = int(os.environ.get("SESSION_COOKIE_LIFETIME") or "60")
