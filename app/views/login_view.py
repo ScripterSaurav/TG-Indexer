@@ -30,7 +30,7 @@ class LoginView(BaseView):
             post_data["password"] == req.app["password"]
         )
         if not authenticated:
-            loc = location.update_query({"error": "Wrong Username or Passowrd"})
+            loc = location.update_query({"error": "Wrong Username or Password"})
             return web.HTTPFound(location=loc)
 
         session = await new_session(req)
