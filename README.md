@@ -2,11 +2,24 @@
 
 > A powerful Python web application that indexes Telegram channels and chats, allowing you to browse, search, and download media files through a web interface.
 
-
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![Telethon](https://img.shields.io/badge/Telethon-Library-green?logo=telegram)
 ![License](https://img.shields.io/badge/License-GPL-yellow)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+
+----
+
+# 👀 Demo 
+
+<details>
+    <summary><b>Click Here For Demo</b></summary>
+
+<img width="90" src="images/HomePage.jpg">|<img width="90" src="images/IndexPage.jpg">|<img width="90" src="images/StreamPage.jpg">
+
+</details>
+
+----
+
 
 ## 📋 To-Do List
 
@@ -22,6 +35,7 @@
 - 📥 **Media Download** - Download files via browser or download managers
 - 🔒 **Authentication** - Optional username/password protection
 - 🎯 **Selective Indexing** - Choose specific chats or index all available
+
 
 ## 🚀 Quick Deploy
 
