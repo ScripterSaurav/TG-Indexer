@@ -5,7 +5,7 @@ import aiohttp_jinja2
 from aiohttp import web
 from telethon.tl import types
 from telethon.tl.custom import Message
-from markupsafe import Markup
+from jinja2 import Markup
 
 from app.util import get_file_name, get_human_size
 from app.config import block_downloads
@@ -32,13 +32,16 @@ class InfoView(BaseView):
             log.debug(f"no valid entry for {file_id} in {chat_id}")
             return {
                 "found": False,
-                "reason": "Resource you are looking for cannot be retrived!",
+                "reason": "Resource you are looking for cannot be retrieved!",
                 "authenticated": req.app["is_authenticated"],
             }
 
         return_val = {
             "authenticated": req.app["is_authenticated"],
+            "source_channel_name": chat["title"],
+            "source_channel_logo": f"/{alias_id}/logo",
         }
+        
         reply_btns = []
         if message.reply_markup:
             if isinstance(message.reply_markup, types.ReplyInlineMarkup):

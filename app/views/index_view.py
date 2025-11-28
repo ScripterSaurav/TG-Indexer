@@ -1,4 +1,5 @@
 import logging
+import re
 from typing import List
 from urllib.parse import quote
 
@@ -10,9 +11,7 @@ from app.config import results_per_page, block_downloads
 from app.util import get_file_name, get_human_size
 from .base import BaseView
 
-
 log = logging.getLogger(__name__)
-
 
 class IndexView(BaseView):
     @aiohttp_jinja2.template("index.html")
@@ -58,6 +57,8 @@ class IndexView(BaseView):
             if m.file and not isinstance(m.media, types.MessageMediaWebPage):
                 filename = get_file_name(m, quote_name=False)
                 insight = m.text[:60] if m.text else filename
+                # Remove special characters and emojis from the insight
+                insight = re.sub(r'(?<![a-zA-Z0-9])_|_(?![a-zA-Z0-9])|[^\w\s.:\'+\-()\[\]]', '', insight)
                 entry = dict(
                     file_id=m.id,
                     media=True,
@@ -70,6 +71,8 @@ class IndexView(BaseView):
                     download=f"{alias_id}/{m.id}/{quote(filename)}",
                 )
             elif m.message:
+                # Remove special characters and emojis from the message
+                message = re.sub(r'(?<![a-zA-Z0-9])_|_(?![a-zA-Z0-9])|[^\w\s.:\'+\-()\[\]]', '', m.raw_text)
                 entry = dict(
                     file_id=m.id,
                     media=False,
