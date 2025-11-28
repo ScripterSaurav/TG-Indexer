@@ -6,8 +6,8 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind-dark.min.css" rel="stylesheet">
 	<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js">
-
 	</script>
+	
 	<script>
 		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.className = 'dark';
@@ -23,8 +23,11 @@
 	</style>
 
 	<title>
-		{% if title %} {{title}} {% else %} Telegram Index {% endif %}
+		{% if title %} {{title}} {% else %} Telegram Indexer {% endif %}
 	</title>
+
+	<!-- Include Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 
@@ -35,7 +38,7 @@
 			<a href="/" id="title-a" class="text-left font-bold text-xl lg:text-2xl xl:text-3xl"> Telegram Indexer </a>
 			<div class="space-x-1">
 				<button onclick="toggleTheme()" class="rounded-full bg-white">
-        <img src="app/icons/sun.png" class="h-8" alt="Theme">
+        <img src="https://s3.imgcdn.dev/nW9YV.png" class="h-8" alt="Theme">
       </button>
 			{% if authenticated %}
       <button class="rounded-full bg-white"><a href="/logout">

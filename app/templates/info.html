@@ -3,9 +3,12 @@
             <div class="p-4 space-y-8">
                 {% if found %}
                     {% if media %}
-                        <h1 class="text-blue-500 text-center text-lg lg:text-xl xl:text-3xl w-full break-all">
+                        
+                        <div style="backdrop-filter: blur(10px); background-color: rgba(224, 255, 255, 0.5); padding: 20px; border-radius: 10px;">
+                        <h1 class="text-black-500 text-center text-lg lg:text-xl xl:text-3xl w-full break-all">
                             Download {{name}}
                         </h1>
+                          </div>
 
                         <div class="mx-auto w-full p-2 md:w-3/4 lg:w-2/5 p-2">
                             {% if media.image %}
@@ -34,13 +37,14 @@
                                         'my-video-player',{
                                             "layoutControls": {
                                                 "autoPlay": false,
-                                                "mute": true,
+                                                "mute": false,
                                                 "allowTheatre": true,
                                                 "playPauseAnimation": true,
                                                 "playbackRateEnabled": true,
                                                 "allowDownload": false,
                                                 "playButtonShowing": true,
                                                 "fillToContainer": true,
+                                                "primaryColor": "#e70036",
                                                 "posterImage": ""
                                             }
                                         }
@@ -73,7 +77,7 @@
 
                                 <div class="mx-auto mt-1">
                                     <div class="flex justify-center text-gray-300 font-mono">
-                                        <p class="text-left w-full rounded p-4 bg-gray-900 shadow-lg"> {{ caption_html|safe }} </p>
+                                        <p class="text-left w-full rounded p-4 bg-gray-900 shadow-lg" style="overflow-wrap: break-word;"> <span style="color: red; font-weight: bold;"> <i class="fas fa-file"></i> File Name:</span> <br> {{ caption_html|safe }} </p>
                                     </div>
                                     {% if reply_btns %}
                                         <div class="w-full block">
@@ -94,7 +98,7 @@
                         
                         <div class="text-center text-white">
 
-                            <a class="rounded p-3 bg-indigo-500 hover:bg-indigo-700 shadow-lg{% if block_downloads %} cursor-not-allowed disabled{% else %}" download="{{name}}{% endif %}" href="{{download_url}}">Download Now! ({{ human_size }})</a>
+                            <a class="rounded p-3 bg-indigo-500 hover:bg-indigo-700 shadow-lg{% if block_downloads %} cursor-not-allowed disabled{% else %}" download="{{name}}{% endif %}" href="{{download_url}}"> <i class="fas fa-download"></i> Download Now! ({{ human_size }})</a>
 
                         </div>
                     {% else %}
