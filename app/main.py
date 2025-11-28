@@ -31,6 +31,8 @@ log = logging.getLogger(__name__)
 class Indexer:
 
     TEMPLATES_ROOT = pathlib.Path(__file__).parent / "templates"
+    ICONS_ROOT = pathlib.Path(__file__).parent / "icons"
+
 
     def __init__(self):
         middlewares = []
@@ -50,6 +52,8 @@ class Indexer:
         self.loop = asyncio.get_event_loop()
 
         self.server = web.Application(middlewares=middlewares)
+
+        self.server.router.add_icons('/icons/', self.ICONS_ROOT, name='icons')
 
         self.server.on_startup.append(self.startup)
         self.server.on_cleanup.append(self.cleanup)
