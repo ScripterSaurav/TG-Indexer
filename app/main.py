@@ -53,7 +53,7 @@ class Indexer:
 
         self.server = web.Application(middlewares=middlewares)
 
-        self.server.router.add_icons('/icons/', self.ICONS_ROOT, name='icons')
+        self.server.router.add_static('/icons/', self.ICONS_ROOT, name='icons')
 
         self.server.on_startup.append(self.startup)
         self.server.on_cleanup.append(self.cleanup)
