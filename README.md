@@ -134,13 +134,6 @@ The web interface will be available at `http://localhost:8080` (or your configur
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
-## 🧑‍💻 Author & Credits
-
-**Credit:** [odysseusmax/tg-index](https://github.com/odysseusmax/tg-index) 
-
-**Fixed & Modified:** ✨ by [Me](#)
-
-
 ## 📄 License
 
 This project is licensed under the **The GNU General Public License** - see the [LICENSE](LICENSE) file for details.
