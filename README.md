@@ -1,4 +1,4 @@
-# Telegram Indexer
+# Telegram Indexer (Movie Web-App)
 
 > A powerful Python web application that indexes Telegram channels and chats, allowing you to browse, search, and download media files through a web interface.
 
