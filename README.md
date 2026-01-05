@@ -36,6 +36,10 @@
 - 🔒 **Authentication** - Optional username/password protection
 - 🎯 **Selective Indexing** - Choose specific chats or index all available
 
+## 👨‍🏫 Deploy Tutorial
+
+[![Watch the video](https://img.youtube.com/vi/RUfDh7c8qHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=RUfDh7c8qHg)
+
 
 ## 🚀 Quick Deploy
 
