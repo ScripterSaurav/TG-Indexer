@@ -19,7 +19,6 @@ from .faviconicon_view import FaviconIconView
 from .middlewhere import middleware_factory
 from .pages_view import ReportView, ContactView, AboutView
 from .downloadPG import DownloadPGView
-from .api_view import ApiView
 from .chat_lock_view import ChatLockView
 from .global_search_view import GlobalSearchView
 
@@ -37,11 +36,7 @@ class Views(
     LoginView,
     LogoutView,
     FaviconIconView,
-    ReportView,
-    ContactView,
-    AboutView,
     DownloadPGView,
-    ApiView,
     ChatLockView,
     GlobalSearchView,
 ):
