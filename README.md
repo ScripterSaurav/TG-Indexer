@@ -133,7 +133,13 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 
 Credit [odysseusmax](https://github.com/odysseusmax) for base repo: [tg-index](https://github.com/odysseusmax/tg-index) 
 
-**Fixed & Modified:** ✨ by [Me](#)
+**Fixed & Modified:** ✨ by [Me](https://github.com/ScripterSaurav)
+
+
+## **Help & Support**
+
+[![Telegram Username](https://img.shields.io/static/v1?label=&message=Telegram%20&color=blue&style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/webcoderhub)
+
 
 
 ## 📄 License
