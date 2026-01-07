@@ -9,7 +9,6 @@ from telethon.tl.types import Channel, Chat, User
 
 from .config import index_settings
 from .views import Views
-from .views.api_view import ApiView
 
 log = logging.getLogger(__name__)
 
@@ -64,8 +63,6 @@ async def sitemap_xml(request):
     # Static URLs with priorities
     urls = [
         f"<url><loc>{base_url}/</loc><priority>1.0</priority></url>",  # Home (highest priority)
-        f"<url><loc>{base_url}/plycreator</loc><priority>0.8</priority></url>",  # Plycreator Page
-        f"<url><loc>{base_url}/contact</loc><priority>0.8</priority></url>",  # Contact Page
     ]
 
     # Loop through all alias_ids
@@ -116,14 +113,6 @@ async def sitemap_xml(request):
 
 
 async def setup_routes(app: web.Application, handler: Views):
-    # If handler doesn't already expose ApiView methods, mix them in dynamically
-    if not isinstance(handler, ApiView):
-        handler.__class__ = type("ViewsWithApi", (handler.__class__, ApiView), {})
-        log.debug("Mixed ApiView into Views handler")
-
-    # Attach handler to app for global access (used by sitemap, etc.)
-    app["views"] = handler
-
     client = handler.client
     index_all = index_settings["index_all"]
     index_private = index_settings["index_private"]
@@ -139,9 +128,6 @@ async def setup_routes(app: web.Application, handler: Views):
         web.get("/favicon.ico", handler.faviconicon, name="favicon"), 
         web.get("/robots.txt", robots_txt, name="robots_txt"),  # New route for robots.txt
         web.get("/sitemap.xml", sitemap_xml, name="sitemap_xml"),  # New sitemap route
-        web.get("/report", handler.video_report, name="video_report"),  # Add the new route here
-        web.get("/contact", handler.contact_us, name="contact_us"),
-        web.get("/about", handler.about, name="about"),
         web.get(r"/{chat}/{id}/downloadPG", handler.downloadPG, name="download_page"),
         web.get("/search", handler.global_search, name="global_search"),
 
@@ -150,14 +136,6 @@ async def setup_routes(app: web.Application, handler: Views):
         web.post('/chat_lock_login', handler.chat_lock_login_post, name='chat_lock_login_post'),
         web.get('/chat_lock_logout', handler.chat_lock_logout, name='chat_lock_logout'),
         web.get('/{chat}/logout', handler.chat_specific_logout, name='chat_specific_logout'),  # New: Logout from specific chat only
-        
-        # Global JSON API endpoints
-        web.get("/api", handler.root, name="api_root"),
-        web.get("/api/chats", handler.chats, name="api_chats"),
-        web.get("/api/search", handler.search, name="api_search"),
-        web.get("/api/{chat}/items", handler.chat_items, name="api_chat_items"),
-        # === NEW ROUTE: Search for specific item across all pages ===
-        web.get("/api/{chat}/item", handler.search_item, name="api_search_item"),
     ]
 
     if index_all:
