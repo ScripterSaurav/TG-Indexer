@@ -45,18 +45,6 @@
     <link rel="apple-touch-icon" sizes="256x256" href="/static/icons/icon-256x256.png">
     <link rel="apple-touch-icon" sizes="384x384" href="/static/icons/icon-384x384.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/static/icons/icon-512x512.png">
-    
-    <!-- Safelink Script -->
-    <script async src="/static/js/safelink.js"></script>
-    
-    <!-- Preloader Script
-    <script async src="/static/js/HomePreloader.js"></script>
-     -->
-
-    <!-- Preloader Script -->
-    <script>
-        setTimeout(function(){document.querySelector(".preloader").style.display="none"},3e3);
-    </script>
 
     
 
@@ -89,26 +77,6 @@
         } else {
             document.documentElement.className = 'light';
         }
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var backButton = document.getElementById("back-button");
-            var currentUrl = window.location.pathname;
-
-            if (currentUrl === "/") {
-                backButton.style.display = "none";
-            } else if (/\/\w+\/\d+\/watch/.test(currentUrl)) {
-                // URL pattern: /prefix/number/view
-                var parts = currentUrl.split('/');
-                backButton.href = "/" + parts[1];
-                backButton.style.display = "block";
-            } else if (/\/\w+/.test(currentUrl)) {
-                // URL pattern: /prefix
-                backButton.href = "/";
-                backButton.style.display = "block";
-            }
-        });
     </script>
 
 
@@ -192,17 +160,7 @@
 /* Dark mode styles */
 .dark #footer {
     background-image: radial-gradient(circle at bottom left, #2e2e2e 12%, transparent 0%);
-} 
-
-/* Dark mode thumbnail overlay */
-.dark #thumbnail {
-    filter: brightness(0.8) contrast(1.1);
 }
-
-/* Optional: Add a smooth transition */
-#thumbnail {
-    transition: filter 0.3s ease;
-} 
 
     
 /* Global Search bar Header styles */
@@ -284,15 +242,7 @@
 <body class="text-black dark:bg-black dark:text-white">
 
     <header class="bg-blue-300 dark:bg-gray-900 text-white mb-2 p-2 w-full shadow" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: inline-block;">
-        <div class="flex mx-auto justify-between items-center max-w-screen-xl"> 
-
-
-<!-- Header SideBar Menu open Button -->
-<a href="javascript:void(0);" onclick="openSidebar()" id="menu-btn" aria-label="Open Sidebar" class="text-black dark:text-gray-400 mr-2 ml-1">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4" height="27" width="27">
-  <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75ZM2 8a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 2 8Zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-</svg>
-</a>
+        <div class="flex mx-auto justify-between items-center max-w-screen-xl">
             
             <!-- Site Title -->
             <a href="/" id="title-a" class="text-left font-bold text-xl lg:text-2xl xl:text-3xl" style="margin-right: auto;">
