@@ -17,7 +17,6 @@ from .login_view import LoginView
 from .logout_view import LogoutView
 from .faviconicon_view import FaviconIconView
 from .middlewhere import middleware_factory
-from .pages_view import ReportView, ContactView, AboutView
 from .downloadPG import DownloadPGView
 from .chat_lock_view import ChatLockView
 from .global_search_view import GlobalSearchView
