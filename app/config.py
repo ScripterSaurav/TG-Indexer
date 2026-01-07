@@ -1,3 +1,4 @@
+# config.py - Simplified version
 from pathlib import Path
 import tempfile
 import traceback
@@ -5,7 +6,6 @@ import json
 import sys
 import os
 from dotenv import load_dotenv
-
 
 # Load environment variables from .env or either config.env file if present
 load_dotenv()
@@ -73,4 +73,62 @@ except (KeyError, ValueError):
         print("\n\nPlease set the SECRET_KEY environment variable correctly")
         sys.exit(1)
     else:
-        SECRET_KEY = ""
+        SECRET_KEY = "default_secret_key_change_in_production_32_chars!"
+
+# --- Token validation for downloads/streams ---
+token_validation_enabled = os.environ.get("TOKEN_VALIDATION_ENABLED", "true").strip().lower() == "true"
+token_lifetime = int(os.environ.get("TOKEN_LIFETIME", "3600"))  # 60 minutes (1 hour) default
+
+# Use the same SECRET_KEY for tokens - no need for separate token secret
+# This ensures consistency and reduces configuration complexity
+
+# --- Chat Lock Configuration ---
+chat_lock_enabled = os.environ.get("CHAT_LOCK_ENABLED", "false").strip().lower() == "true"
+
+# Per-channel passwords as JSON string: {"chat_id": "password"}
+channel_passwords_str = os.environ.get("CHANNEL_PASSWORDS", "{}")
+try:
+    raw_channel_passwords = json.loads(channel_passwords_str)
+except json.JSONDecodeError:
+    raw_channel_passwords = {}
+
+# Convert channel passwords to handle both formats (with and without -100 prefix)
+channel_passwords = {}
+for chat_id_str, chat_password in raw_channel_passwords.items():
+    # Remove -100 prefix if present for internal storage
+    if chat_id_str.startswith('-100'):
+        clean_chat_id = chat_id_str[4:]
+    else:
+        clean_chat_id = chat_id_str
+    channel_passwords[clean_chat_id] = chat_password
+
+chat_lock_session_lifetime = int(os.environ.get("CHAT_LOCK_SESSION_LIFETIME", "30")) # minutes
+
+# Helper functions
+def is_chat_locked(chat_id):
+    # Convert chat_id to string and remove -100 prefix if present
+    chat_id_str = str(chat_id)
+    if chat_id_str.startswith('-100'):
+        chat_id_str = chat_id_str[4:]
+
+    result = chat_id_str in channel_passwords
+
+    if debug:
+        print(f"[DEBUG] is_chat_locked: chat={chat_id}, normalized={chat_id_str}, locked={result}")
+
+    return result
+
+
+def get_chat_password(chat_id):
+    # Convert chat_id to string and remove -100 prefix if present
+    chat_id_str = str(chat_id)
+    if chat_id_str.startswith('-100'):
+        chat_id_str = chat_id_str[4:]
+
+    chat_password = channel_passwords.get(chat_id_str)
+
+    if debug:
+        masked = '*' * len(chat_password) if chat_password else 'None'
+        print(f"[DEBUG] get_chat_password: chat={chat_id}, normalized={chat_id_str}, password={masked}")
+
+    return chat_password

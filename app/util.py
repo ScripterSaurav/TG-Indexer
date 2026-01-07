@@ -15,7 +15,7 @@ def get_file_name(message: Message, quote_name: bool = True) -> str:
 
 def get_human_size(num: Union[int, float]) -> str:
     base = 1024.0
-    suffix_list = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"]
+    suffix_list = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
     for unit in suffix_list:
         if abs(num) < base:
             return f"{round(num, 2)} {unit}"
