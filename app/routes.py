@@ -40,78 +40,8 @@ def get_common_routes(handler: Views, alias_id: str) -> List[RouteDef]:
             handler.download_get,
             name=f"download_token_first_{alias_id}",
         ),
-    ] 
-
-
-async def robots_txt(request):
-    """Serve the robots.txt file."""
-    robots_path = os.path.join(os.path.dirname(__file__), 'static', 'robots.txt')
-    try:
-        with open(robots_path, 'r') as f:
-            content = f.read()
-        return web.Response(text=content, content_type='text/plain')
-    except FileNotFoundError:
-        return web.Response(text="User-agent: *\nDisallow:", content_type='text/plain')
-
-
-
-async def sitemap_xml(request):
-    """Generate and serve the sitemap.xml file with pagination and priorities."""
-    base_url = request.scheme + "://" + request.host
-    views = request.app.get("views")
-    
-    # Static URLs with priorities
-    urls = [
-        f"<url><loc>{base_url}/</loc><priority>1.0</priority></url>",  # Home (highest priority)
     ]
-
-    # Loop through all alias_ids
-    for alias_id, chat_info in views.chat_ids.items():
-        # Add alias route
-        urls.append(f"<url><loc>{base_url}/{alias_id}</loc><priority>0.6</priority></url>")  # Alias route with medium priority
-        
-        offset_id = 0  # Start fetching from the latest message
-        while True:
-            # Fetch messages with pagination
-            messages = await views.client.get_messages(chat_info["chat_id"], limit=100, offset_id=offset_id)
-            if not messages:
-                break  # Stop if no more messages
-            
-            for message in messages:
-                if message.file:
-                    filename = message.file.name if message.file.name else "Unknown File"
-                    file_id = message.id
-                    
-                    # File URL with just the filename as priority
-                    urls.append(
-                        f"<url><loc>{base_url}/{alias_id}/{file_id}</loc>"
-                        f"<lastmod>{message.date.strftime('%Y-%m-%d')}</lastmod>"
-                        f"<priority>0.5</priority></url>"
-                    )
-                    
-                    # View/Download URL with priority
-                    urls.append(
-                        f"<url><loc>{base_url}/{alias_id}/{file_id}/view</loc>"
-                        f"<lastmod>{message.date.strftime('%Y-%m-%d')}</lastmod>"
-                        f"<priority>0.5</priority></url>"
-                    )
-            
-            # Update offset_id to fetch the next batch of messages
-            offset_id = messages[-1].id
-
-    # Generate sitemap XML structure
-    sitemap_content = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "\n".join(urls) +
-        "\n</urlset>"
-    )
-
-    return web.Response(text=sitemap_content, content_type="application/xml")
-
-
-
-
+    
 async def setup_routes(app: web.Application, handler: Views):
     client = handler.client
     index_all = index_settings["index_all"]
@@ -125,9 +55,7 @@ async def setup_routes(app: web.Application, handler: Views):
         web.get("/login", handler.login_get, name="login_page"),
         web.post("/login", handler.login_post, name="login_handle"),
         web.get("/logout", handler.logout_get, name="logout"),
-        web.get("/favicon.ico", handler.faviconicon, name="favicon"), 
-        web.get("/robots.txt", robots_txt, name="robots_txt"),  # New route for robots.txt
-        web.get("/sitemap.xml", sitemap_xml, name="sitemap_xml"),  # New sitemap route
+        web.get("/favicon.ico", handler.faviconicon, name="favicon"),
         web.get(r"/{chat}/{id}/downloadPG", handler.downloadPG, name="download_page"),
         web.get("/search", handler.global_search, name="global_search"),
 
