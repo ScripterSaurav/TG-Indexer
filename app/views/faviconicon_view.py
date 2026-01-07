@@ -1,23 +1,26 @@
 import random
 from PIL import Image, ImageDraw, ImageFont
-
 from aiohttp import web
-
-from app.config import logo_folder
+from pathlib import Path
 from .base import BaseView
 
 
 class FaviconIconView(BaseView):
     async def faviconicon(self, req: web.Request) -> web.Response:
-        favicon_path = logo_folder.joinpath("favicon.ico")
-        text = "T"
+        favicon_path = Path(__file__).resolve().parent.parent / "static" / "img" / "favicon.ico"
+        text = "W"
         if not favicon_path.exists():
             W, H = (360, 360)
             color = tuple((random.randint(0, 255) for _ in range(3)))
             im = Image.new("RGB", (W, H), color)
             draw = ImageDraw.Draw(im)
             font = ImageFont.truetype("arial.ttf", 100)
-            w, h = draw.textsize(text, font=font)
+
+            # Use getbbox() to calculate text size
+            bbox = font.getbbox(text)
+            w, h = bbox[2], bbox[3]
+
+            # Center the text
             draw.text(((W - w) / 2, (H - h) / 2), text, fill="white", font=font)
             im.save(favicon_path, "JPEG")
 

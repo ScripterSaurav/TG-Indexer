@@ -10,14 +10,18 @@ from .home_view import HomeView
 from .wildcard_view import WildcardView
 from .download import Download
 from .index_view import IndexView
-from .info_view import InfoView
+from .watch_view import WatchView
 from .logo_view import LogoView
 from .thumbnail_view import ThumbnailView
 from .login_view import LoginView
 from .logout_view import LogoutView
 from .faviconicon_view import FaviconIconView
 from .middlewhere import middleware_factory
-
+from .pages_view import ReportView, ContactView, AboutView
+from .downloadPG import DownloadPGView
+from .api_view import ApiView
+from .chat_lock_view import ChatLockView
+from .global_search_view import GlobalSearchView
 
 TELEGRAM_CHAT = Union[Chat, User, Channel]
 
@@ -26,13 +30,20 @@ class Views(
     HomeView,
     Download,
     IndexView,
-    InfoView,
+    WatchView,
     LogoView,
     ThumbnailView,
     WildcardView,
     LoginView,
     LogoutView,
     FaviconIconView,
+    ReportView,
+    ContactView,
+    AboutView,
+    DownloadPGView,
+    ApiView,
+    ChatLockView,
+    GlobalSearchView,
 ):
     def __init__(self, client: Client):
         self.client = client
