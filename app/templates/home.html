@@ -1,17 +1,50 @@
 {% include 'header.html' %}
 
-<h1 class=" my-2 text-2xl text-center font-bold text-green-400">
-    Available Sources
-</h1>
+{% include 'sidebar.html' %}
+
+<div class="preloader">
+  <img src="/static/img/logo.webp" alt="BrandLogo" />
+  <div class="brandName">WatchOFlix</div>
+  <div class="loader-line"></div> <!-- Straight-line loader -->
+</div>
+
+<!-- Margin from Top Header for Body -->
+<div style="margin-top: 70px;"></div>
+<!-- End -->
+
+<!-- Telegram Join Card -->
+<div style="background: linear-gradient(120deg, #62C7B4, #ACB6E5); color: #333; padding: 15px 20px; border-radius: 10px; width: 354px; border: 1px solid #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: space-between; position: relative; animation: slide-in 0.3s ease-out; margin: 10px auto 20px;">
+  <div style="display: flex; align-items: center; flex-grow: 1; color: white; font-size: 12px; font-weight: bold;">Request Movies on Telegram</div>
+  <a href="https://t.me/moviesflixoo" target="_blank" style="display: inline-block; padding: 5px 10px; font-size: 12px; font-weight: bold; color: white; background-color: #DFA000; text-align: center; text-decoration: none; border-radius: 50px;">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50" fill="currentColor" style="margin-right: 8px; vertical-align: middle; display: inline-flex; align-items: center; position: relative; bottom: 2px;">
+      <path d="M25,2c12.703,0,23,10.297,23,23S37.703,48,25,48S2,37.703,2,25S12.297,2,25,2z M32.934,34.375	c0.423-1.298,2.405-14.234,2.65-16.783c0.074-0.772-0.17-1.285-0.648-1.514c-0.578-0.278-1.434-0.139-2.427,0.219	c-1.362,0.491-18.774,7.884-19.78,8.312c-0.954,0.405-1.856,0.847-1.856,1.487c0,0.45,0.267,0.703,1.003,0.966	c0.766,0.273,2.695,0.858,3.834,1.172c1.097,0.303,2.346,0.04,3.046-0.395c0.742-0.461,9.305-6.191,9.92-6.693	c0.614-0.502,1.104,0.141,0.602,0.644c-0.502,0.502-6.38,6.207-7.155,6.997c-0.941,0.959-0.273,1.953,0.358,2.351	c0.721,0.454,5.906,3.932,6.687,4.49c0.781,0.558,1.573,0.811,2.298,0.811C32.191,36.439,32.573,35.484,32.934,34.375z"></path>
+    </svg>Join</a>
+  <button style="background: none; border: none; color: #999; font-size: 20px; cursor: pointer; margin-left: 10px;" onclick="this.parentElement.style.display='none';">&times;</button>
+</div> 
+
+
+<!-- Online user counter (js in footer) -->
+<style>@keyframes pulse { 0%, 100% { transform:scale(0.95); box-shadow:0 0 0 0 rgba(16,185,129,0.7); } 70% { transform:scale(1); box-shadow:0 0 0 8px rgba(16,185,129,0); }}</style><div style="background:#eef3ff;color:#4a5568;font: bold 15px/1.2 sans-serif; border:1px solid #e1effe;border-radius:8px; margin: 10px auto 20px; box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:10px 15px;display:flex;align-items:center;gap:8px; width:100%;max-width:300px;text-align:center;position:relative;"><div style="width:8px;height:8px;background:#10b981;border-radius:50%;animation:pulse 2s infinite"></div> Online Users: <span id="onlineUsers">0</span></div>
+<!-- End -->
+
 
 <div class="mx-auto my-1 p-1 w-full">
     <div class="flex flex-wrap gap-4 justify-center w-full">
         {% for chat in chats %}
         <a title="{{chat.name}}" href="/{{chat.page_id}}"
-            class="justify-items-center min-h-full w-5/12 sm:w-1/4 md:w-1/5 lg:w-1/6 rounded p-2 text-center break-words shadow hover:shadow-md hover:bg-blue-100 dark:bg-red-700 dark:hover:bg-red-500">
+            class="justify-items-center min-h-full w-5/12 sm:w-1/4 md:w-1/5 lg:w-1/6 rounded p-2 text-center break-words shadow hover:shadow-md hover:bg-blue-100 bg-white dark:bg-gray-900 dark:hover:bg-gray-500 relative" style="border-radius: 10px;">
 
-            <img src="/{{chat.page_id}}/logo?big=1" class="w-full rounded-full">
-            <div class="p-1 mt-2 rounded text-white bg-blue-500 dark:bg-yellow-500">{{chat.name}}</div>
+            <!-- Lock Icon for Locked Chats -->
+            {% if chat.is_locked %}
+            <div class="absolute top-2 right-2 bg-yellow-500 rounded-full p-1" title="This channel requires a password">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            {% endif %}
+
+            <img src="/{{chat.page_id}}/logo?big=1" alt="Logo" class="w-full rounded-full" style="height: 150px; width: 150px;">
+            <div class="p-1 mt-2 w-full rounded text-white bg-blue-500 dark:bg-gray-500">{{chat.name}}</div>
 
         </a>
         {% endfor %}

@@ -1,0 +1,215 @@
+{% include 'header.html' %}
+
+{% include 'sidebar.html' %}
+{% include 'preloader2.html' %}
+
+<!-- Main Content -->
+<div class="p-0 space-y-2" style="margin-top: 50px;">
+    {% if found %}
+        {% if media %} 
+        
+        
+        <!-- Attention Section -->
+<div style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; border-radius: 5px; padding: 20px 40px 20px 20px; margin-top: 70px; margin-bottom: 5px; margin-left: 10px; margin-right: 10px; position: relative; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+    <!-- Close Button -->
+    <button style="background: none; border: none; color: #999; font-size: 22px; cursor: pointer; position: absolute; right: 15px; top: 50%; transform: translateY(-50%);" onclick="this.parentElement.style.display='none';">
+        &times;
+    </button>
+    
+    <!-- Icon and Text -->
+    <svg class="svg-icon" height="24" width="24" style="display: inline-flex; align-items: center; vertical-align: middle; position: relative; bottom: 2px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M623.6 831.6H399.3c-16.6 0-30-13.5-30-30V724c-30.4-20.7-56.1-47.8-75.1-79.4-22.7-37.6-35.2-80.8-36.3-124.9-0.9-35.6 5.6-70.2 19.2-103 13-31.5 32-59.7 56.4-83.8 24.4-24.1 52.8-42.8 84.4-55.6 32.9-13.2 67.6-19.3 103.2-18.1 66.1 2.2 127.9 29.7 174 77.3 46.2 47.7 71.7 110.6 71.7 177 0 45.6-12.2 90.4-35.4 129.5-19.4 32.8-46.1 60.9-77.7 82.1v76.6c-0.1 16.4-13.6 29.9-30.1 29.9z m-194.3-60h164.3v-63.2c0-10.8 5.8-20.7 15.1-26.1 60.4-34.6 97.9-99.3 97.9-168.8 0-105.4-82.4-190.7-187.7-194.3-53.9-1.8-104.8 18.2-143.3 56.4-38.5 38.2-59.1 88.8-57.8 142.7 1.6 67.9 37.7 128.9 96.5 163.3h0.1c9.2 5.4 14.8 15.3 14.8 25.9v64.1z m194.3-63.3zM215.5 535.8h-100c-13.3 0-24-10.7-24-24s10.7-24 24-24h100c13.3 0 24 10.7 24 24s-10.8 24-24 24zM255.9 386.1c-4.1 0-8.3-1.1-12.1-3.3l-86.3-50.5c-11.4-6.7-15.3-21.4-8.6-32.8 6.7-11.4 21.4-15.3 32.8-8.6l86.3 50.5c11.4 6.7 15.3 21.4 8.6 32.8-4.4 7.6-12.4 11.9-20.7 11.9zM362.5 279.5c-8.2 0-16.3-4.2-20.7-11.9l-50.5-86.3c-6.7-11.4-2.9-26.1 8.6-32.8 11.4-6.7 26.1-2.9 32.8 8.6l50.5 86.3c6.7 11.4 2.9 26.1-8.6 32.8-3.8 2.3-8 3.3-12.1 3.3zM512.2 239c-13.3 0-24-10.7-24-24V115c0-13.3 10.7-24 24-24s24 10.7 24 24v100c0 13.3-10.7 24-24 24zM662 279.5c-4.1 0-8.3-1.1-12.1-3.3-11.4-6.7-15.3-21.4-8.6-32.8l50.5-86.3c6.7-11.4 21.4-15.3 32.8-8.6 11.4 6.7 15.3 21.4 8.6 32.8l-50.5 86.3c-4.5 7.7-12.5 11.9-20.7 11.9zM768.5 386.1c-8.2 0-16.3-4.2-20.7-11.9-6.7-11.4-2.9-26.1 8.6-32.8l86.3-50.5c11.4-6.7 26.1-2.9 32.8 8.6 6.7 11.4 2.9 26.1-8.6 32.8l-86.3 50.5c-3.8 2.2-7.9 3.3-12.1 3.3zM909 535.8H809c-13.3 0-24-10.7-24-24s10.7-24 24-24h100c13.3 0 24 10.7 24 24s-10.7 24-24 24zM562.2 925.6h-100c-16.6 0-30-13.4-30-30s13.4-30 30-30h100c16.6 0 30 13.4 30 30s-13.4 30-30 30z" fill="currentColor" /></svg>
+    <strong>Tip:</strong> Please download the 10-bit video and play it in MX Player for the best experience.
+</div> 
+	
+
+            <!-- Media Section -->
+            <div class="mx-auto w-full p-2 md:w-3/4 lg:w-2/5 p-2">
+                {% if media.image %}
+                    <!-- Image Display -->
+                    <img class="mx-auto rounded" src="{{thumbnail}}" alt="{{name}}">
+                {% elif media.video %}
+                    <!-- Video Display -->
+                    <div id="video-warning" class="mx-auto p-4 bg-gray-600 text-gray-300 rounded border text-center hidden break-words" style="aspect-ratio: 16/9;">
+                        <p style="margin-top: 60px">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4" height="20" width="20" style="margin-right: 5px; vertical-align: middle; display: inline-flex; align-items: center; position: relative; bottom: 2px;">
+								<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 4a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+							</svg>
+							Sorry, This video could not be played!
+						</p>
+                    </div>
+                    <div id="my-video-wrapper">
+                        <div id="my-video-player" class="mx-auto rounded" controls poster="{{thumbnail}}">
+                            <!-- ArtPlayer will replace this element -->
+                        </div>
+                    </div>
+                    
+                <script>
+                        // Initialize ArtPlayer
+                        var art = new Artplayer({
+                            container: '#my-video-player',
+                            url: '{{ download_url }}',
+			    type: 'video/mp4',
+                            poster: '{{ thumbnail }}',
+                            title: '{{ caption_html2|safe }}',
+                            volume: 0.5,
+                            isLive: false,
+			    preload: 'auto',
+                            autoOrientation: true,
+                            muted: false,
+                            lock: true,
+                            flip: true,
+                            autoMini: false,
+                            screenshot: true,
+                            setting: true,
+                            playbackRate: true,
+                            autoPlayback: true,
+                            aspectRatio: true,
+                            fullscreen: true,
+                            fullscreenWeb: true,
+                            miniProgressBar: true,
+                            mutex: true,
+                            light: true,
+                            backdrop: true,
+                            theme: '#f00',
+                            lang: navigator.language.toLowerCase(),
+                        }); 
+
+					    art.on('video:loadedmetadata', () => {
+                            art.currentTime = 1;
+                        });
+
+                        // Handle video load errors
+                        function handleVideoError() {
+                            document.getElementById('my-video-wrapper').style.display = 'none';
+                            document.getElementById('video-warning').style.display = 'block';
+                        }
+
+                        // ArtPlayer error events
+                        art.on('video:loaderror', handleVideoError);
+                        art.on('error', handleVideoError);
+                    </script>
+                {% elif media.audio %}
+                    <!-- Audio Display -->
+                    <div id="audio-warning" class="mx-auto p-4 bg-gray-600 text-gray-300 rounded border text-center hidden break-words">
+                        <p>Audio {{name}} could not be played!</p>
+                    </div>
+                    <div id="my-audio-wrapper">
+                        <img class="mx-auto rounded w-full" src="{{thumbnail}}" alt="{{name}}">
+                        <audio class="mx-auto" controls muted>
+                            <source src="{{download_url}}" type="audio/mpeg" />
+                        </audio>
+                    </div>
+                    <script>
+                        var audio = document.querySelector("audio");
+                        var src = audio.firstElementChild;
+                        src.addEventListener('error', function(evt) {
+                            console.log(evt);
+                            document.getElementById('my-audio-wrapper').style.display = 'none';
+                            document.getElementById('audio-warning').style.display = 'block';
+                        });
+                    </script>
+                {% endif %} 
+                
+                
+                
+		    <div class="bg-black dark:bg-gray-900" style="background-color: ##000; border-radius: 5px; padding: 5px 10px; margin-top: 5px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"> 
+			    
+		    <!-- bookmark add button -->
+		      <button class="bookmark-btn bg-green-600 dark:bg-gray-800" id="bookmarkbtn" onclick="bookmarkPage()">
+			      <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#ffffff" style="vertical-align: middle; display: inline-flex; align-items: center; position: relative; bottom: 2px;"><path d="M200-120v-640q0-33 23.5-56.5T280-840h240v80H280v518l200-86 200 86v-278h80v400L480-240 200-120Zm80-640h240-240Zm400 160v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z"/>
+			      </svg>Bookmark</button> 
+			    
+		    <!-- video report button -->
+		   <a href="/report" target="_blank" class="bg-red-600 dark:bg-gray-800" style="display: inline-block; align-items: center; padding: 5px 10px; font-size: 12px; font-weight: bold; color: white; text-align: center; text-decoration: none; border-radius: 50px;">
+			   
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4" height="20" width="20" style="margin-right: 5px; vertical-align: middle; display: inline-flex; align-items: center; position: relative; bottom: 2px;">
+		<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 4a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+	</svg>Report</a> 
+
+			    <!-- Download Page button -->
+			    <a href="/{{ page_id }}/{{ file_id }}/downloadPG"
+   class="btn downloadP-btn bg-blue-500 dark:bg-gray-800"
+   style="display: inline-flex; align-items: center; padding: 5px 10px; font-size: 12px; font-weight: bold; color: white; text-decoration: none; border-radius: 25px;">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4" height="20" width="20" style="margin-right: 5px; position: relative; bottom: 2px;">
+  <path fill-rule="evenodd" d="M4.5 13a3.5 3.5 0 0 1-1.41-6.705A3.5 3.5 0 0 1 9.72 4.124a2.5 2.5 0 0 1 3.197 3.018A3.001 3.001 0 0 1 12 13H4.5Zm6.28-3.97a.75.75 0 1 0-1.06-1.06l-.97.97V6.25a.75.75 0 0 0-1.5 0v2.69l-.97-.97a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0l2.25-2.25Z" clip-rule="evenodd" />
+</svg>
+    Download
+</a> 
+		    
+		    </div>
+	
+	
+
+                <!-- Caption Section -->
+                {% if caption_html %}
+                    <div class="mx-auto mt-1">
+                        <div class="flex justify-center text-gray-300 font-mono">
+                            <p class="text-left w-full rounded p-4 bg-gray-900 shadow-lg" style="overflow-wrap: break-word;">
+                                
+                                <span id="movie-title">{{ caption_html4|safe }}</span>
+                            </p>
+                        </div>
+                        {% if reply_btns %}
+                            <div class="w-full block">
+                                {% for row in reply_btns %}
+                                    <div class="flex justify-center">
+                                        {% for btn in row %}
+                                            <a class="p-2 m-1 flex-1 border rounded bg-white border-blue-500 text-center text-blue-500 hover:bg-blue-500 hover:text-white transition ease-in duration-150" href="{{ btn.url }}" target="_blank">
+                                                {{btn.text}}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+            </div> 
+
+	
+	<!-- Movie Imdb data Section -->
+	<div id="movie-info"></div>
+            
+        
+        
+
+
+
+        {% else %}
+            <!-- Text Display -->
+            <div class="mx-auto flex flex-wrap justify-center w-full md:w-3/4 mt-1">
+                <div class="flex justify-center text-gray-300 font-mono">
+                    <p class="text-left rounded p-4 bg-gray-900 w-full shadow-lg">{{ text_html|safe }}</p>
+                </div>
+                {% if reply_btns %}
+                    <div class="w-full block">
+                        {% for row in reply_btns %}
+                            <div class="flex justify-center">
+                                {% for btn in row %}
+                                    <a class="p-2 m-1 flex-1 border rounded bg-white border-blue-500 text-center text-blue-500 hover:bg-blue-500 hover:text-white transition ease-in duration-150" href="{{btn.url}}" target="_blank">
+                                        {{btn.text}}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+	
+    {% else %}
+        <!-- Error Message -->
+        <div class="mt-32 mb-16 text-center">
+			<p class="text-red-500 text-3xl md:text-4xl lg:text-5xl font-bold animate-pulse">
+				⚠️ Ooops!...
+			</p>
+			<p class="text-gray-400 mt-2 text-lg">{{ reason }}</p>
+		</div>
+    {% endif %}
+	
+</div>
+
+
+{% include 'footer.html' %}

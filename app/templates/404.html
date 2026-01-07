@@ -1,0 +1,83 @@
+<!-- templates/404.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - 404 Error</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .error-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .error-code {
+            font-size: 72px;
+            color: #dc3545;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .error-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #495057;
+        }
+        .requested-url {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .home-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+            color: white;
+        }
+        .help-text {
+            margin-top: 30px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-message">Page Not Found</div>
+        
+        <p>Sorry, the page you are looking for doesn't exist or has been moved.</p>
+        
+        <div class="requested-url">
+            Requested URL: <strong>{{ request_path }}</strong>
+        </div>
+
+        <a href="/" class="home-link">Go to Homepage</a>
+        
+        <div class="help-text">
+            If you believe this is an error, please check the URL or navigate from the homepage.
+        </div>
+    </div>
+</body>
+</html>

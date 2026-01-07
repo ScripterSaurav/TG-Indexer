@@ -1,53 +1,399 @@
 <!doctype html>
-<html class="light" lang="en">
+<html class="dark" lang="en">
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %} {{title}} {% else %} WatchOFlix | Make It Streamable {% endif %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="max-image-preview:large, index, follow">
+    
+    <meta name="google-site-verification" content="UTcNVd9abl0WpfA7KedXj9iQMYHTM3C195RghwaEiZo" />
 
-	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind-dark.min.css" rel="stylesheet">
-	<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js">
-	</script>
-	
-	<script>
-		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.className = 'dark';
-    } else {
-      document.documentElement.className = 'light';
-      }
-	</script>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-		* {
-			font-family: 'Roboto', sans-serif;
-		}
-	</style>
+    <!-- Meta tags for social sharing -->
+    <meta name="description" content="Stream online or download your favorite movies, animes and web-series Free. Without login and irritating ads">
+    <meta name="keywords" content="Netflix, amazonPrime, youtube, stream online">
+    <meta name="author" content="watchOflix">
+  
+    <!-- Open Graph meta tags for Facebook, Twitter, etc. -->
+    <meta property="og:title" content="{% if title %} {{title}} {% else %} WatchOFlix | Make It Streamable {% endif %}">
+    <meta property="og:description" content="Stream online or download your favorite movies, animes and web-series Free. Without login and irritating ads">
+    <meta property="og:image" content="{% if thumbnail %} https://watchoflix.koyeb.app{{thumbnail}} {% elif logo %} https://watchoflix.koyeb.app{{ logo }} {% else %} https://rawcdn.githack.com/ScripterSaurav/ImgCdn/refs/heads/main/Banners/watchoflix.webp {% endif %}">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:type" content="website">
+   
+    <!-- Favicon (required) -->
+    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
 
-	<title>
-		{% if title %} {{title}} {% else %} Telegram Indexer {% endif %}
-	</title>
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" sizes="48x48"  href="/static/icons/icon-48x48.png">
+    <link rel="icon" type="image/png" sizes="72x72"  href="/static/icons/icon-72x72.png">
+    <link rel="icon" type="image/png" sizes="96x96"  href="/static/icons/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/static/icons/icon-128x128.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/static/icons/icon-144x144.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/static/icons/icon-152x152.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/static/icons/icon-256x256.png">
+    <link rel="icon" type="image/png" sizes="384x384" href="/static/icons/icon-384x384.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/icons/icon-512x512.png">
 
-	<!-- Include Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="128x128" href="/static/icons/icon-128x128.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/static/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/static/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/static/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/static/icons/icon-512x512.png">
+    
+    <!-- Safelink Script -->
+    <script async src="/static/js/safelink.js"></script>
+    
+    <!-- Preloader Script
+    <script async src="/static/js/HomePreloader.js"></script>
+     -->
+
+    <!-- Preloader Script -->
+    <script>
+        setTimeout(function(){document.querySelector(".preloader").style.display="none"},3e3);
+    </script>
+
+    
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Asynchronous Loading of Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Lobster&display=swap" 
+      as="style" 
+      onload="this.onload=null;this.rel='stylesheet'">
+     <noscript>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Lobster&display=swap">
+     </noscript>
+    
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind-dark.min.css">
+
+    <!-- Artplayer Script --> 
+    <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+
+    <!-- online user counter -->
+    <script src="https://online-user-tracker.vercel.app/online-tracker.js"></script>
+
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.className = 'dark';
+        } else {
+            document.documentElement.className = 'light';
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var backButton = document.getElementById("back-button");
+            var currentUrl = window.location.pathname;
+
+            if (currentUrl === "/") {
+                backButton.style.display = "none";
+            } else if (/\/\w+\/\d+\/watch/.test(currentUrl)) {
+                // URL pattern: /prefix/number/view
+                var parts = currentUrl.split('/');
+                backButton.href = "/" + parts[1];
+                backButton.style.display = "block";
+            } else if (/\/\w+/.test(currentUrl)) {
+                // URL pattern: /prefix
+                backButton.href = "/";
+                backButton.style.display = "block";
+            }
+        });
+    </script>
+
+
+<style>
+.bookmark-btn,.modal-btn{position:relative;display:inline-flex;transition:background-color .3s;box-shadow:0 4px 6px rgba(0,0,0,.1);cursor:pointer;gap:2px}.badge,.bookmark-btn,.modal-btn{box-shadow:0 4px 6px rgba(0,0,0,.1)}.bookmark-btn{padding:5px 10px;background-color:##009688;color:#fff;font-size:12px;font-weight:bold;border:none;border-radius:50px;margin:5px 2px;align-items:center}.bookmark-btn:hover{background-color:#00796b}.modal-btn{padding:7px 7px;background-color:#eef7ff;color:#000;border:none;border-radius:5px;margin-left:7px;align-items:center}.badge{position:absolute;top:-5px;right:-5px;background-color:#aaa;color:#fff;font-weight:700;font-size:12px;border-radius:50%;padding:1px 5px}.modal{display:none;position:fixed;z-index:9999;right:0;bottom:0;width:100%;height:0;overflow:hidden;background-color:rgba(0,0,0,.4);backdrop-filter:blur(8px);transition:height .3s ease-out}.modal.open{display:block;height:100%}.modal-content{background-color:#fefefe;margin:auto;border:0 solid #888;width:100%;min-height:200px;max-height:90%;display:flex;flex-direction:column;position:absolute;bottom:0;transform:translateY(100%);transition:transform .3s ease-out;border-top-left-radius:15px;border-top-right-radius:15px}.modal.open .modal-content{transform:translateY(0)}.modal-header{display:flex;justify-content:space-between;align-items:center;padding:5px 20px;color:#aaa;background-color:#f7f7f7;border-bottom:0 solid #ddd;border-top-left-radius:15px;border-top-right-radius:15px}.modal-header h5{margin:0}.modal-header .close{color:#000;font-size:18px;font-weight:700;cursor:pointer}.modal-header .close:focus,.modal-header .close:hover{color:#000;text-decoration:none}.modal-body{padding:20px;overflow-y:auto;flex:1}.bookmark{display:flex;justify-content:space-between;padding:5px 0}.remove{background-color:transparent;color:red;border:none;cursor:pointer}.dark .bookmark a,.dark .modal-header .close,.toast{color:#fff}.bookmark a{text-decoration:none;color:#333;word-wrap:break-word;overflow-wrap:break-word;display:inline-block;max-width:90%}.toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:1000;display:flex;flex-direction:column;gap:10px;width:90%;max-width:400px}.toast{background-color:#333;padding:10px 20px;border-radius:5px;box-shadow:0 0 10px rgba(0,0,0,.1);opacity:0;transition:opacity .5s ease-in-out}.toast.show{opacity:1}@media (min-width:768px){.modal,.modal-content{height:auto;bottom:auto}.modal{width:auto;right:20px;top:20px;margin-right:10px;overflow:visible;background-color:transparent;backdrop-filter:none}.modal-content{width:300px;min-height:300px;max-height:500px;border-radius:15px;top:0;right:0;transform:none;transition:none;overflow-y:auto;box-shadow:0 4px 15px rgba(0,0,0,.1)}}.dark .modal-content{background-color:#111828}.dark .modal-header{background-color:#19233b}
+.button,.loading{text-align:center}#movie-info{background-color:#eaeaea;border-radius:8px;padding:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);display:flex;gap:20px;align-items:flex-start;max-width:100%;overflow:hidden;margin-left:10px;margin-right:10px}#movie-info img{max-width:150px;width:100%;height:auto;min-width:100px;min-height:200px;border-radius:8px;display:block;background:#000}#movie-info .details{flex:1;word-wrap:break-word}#movie-info h2{margin:0 0 10px;font-size:20px;color:#2c3e50}#movie-info p{margin:5px 0;font-size:12px;color:#111828}#movie-info strong{color:#2980b9}.button{display:inline-block;margin-top:10px;padding:10px 20px;box-sizing:border-box;line-height:15px;width:100%;color:#4d4d4d;font-size:12px;background-color:#e0e0e0;border:1px solid #c5c5c5;border-radius:5px;text-decoration:none;cursor:pointer;transition:border-color .3s}.button:active,.button:focus{border-color:#575bff;color:#575bff;outline:0}.poster-container{display:flex;flex-direction:column;align-items:flex-start}.dark #movie-info,.dark .button{background-color:#111828;color:#fff}.dark #movie-info h2{color:#deb522}.dark #movie-info strong{color:#dba506}.dark #movie-info p{color:#fff}.loading{font-size:16px;color:#2980b9}
+.loader-line,.loader-line::before{border-radius:10px;position:absolute}.preloader{position:fixed;left:0;top:0;width:100%;height:100%;background:linear-gradient(135deg,#2d3436,#1abc9c);z-index:9999;display:flex;justify-content:center;align-items:center;flex-direction:column;animation:.7s ease-in-out fadeIn}@keyframes fadeIn{from{opacity:2}to{opacity:1}}.preloader img{width:25%;height:auto;margin-bottom:100px;object-fit:contain;border-radius:20px;#box-shadow:0 6px 15px rgba(0,0,0,.5);animation:2s infinite bounce;transform-origin:center bottom}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}.brandName{font-size:24px;position:absolute;bottom:50px;font-family:Roboto,sans-serif;font-weight:600;color:#fff;letter-spacing:1.8px;text-shadow:0 0 10px rgba(255,255,255,.6);animation:1.5s ease-in-out .5s forwards fadeText;opacity:0}@keyframes fadeText{to{opacity:1}}.loader-line{width:30%;height:6px;background:rgba(255,255,255,.2);overflow:hidden;bottom:30px}.loader-line::before{content:'';top:0;left:0;width:0;height:100%;background:linear-gradient(90deg,#1abc9c,#16a085);animation:3s linear infinite load}@keyframes load{0%{width:0%}100%{width:100%}}
+
+    /* Global Styles */
+    body {
+        font-family: 'Josefin Sans', sans-serif;
+        font-display: swap; /* Ensures text remains visible during font loading */
+        background-color: #f3f2f0;
+    }
+
+    /* Logo Styles */
+    .watchoflix-logo {
+        font-size: 1em; /* Large logo size */
+        font-family: 'Lobster', cursive; /* A cursive font */
+        color: #ffffff; /* White color for contrast */
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3), 
+                     3px 3px 5px rgba(0, 0, 0, 0.5);
+        letter-spacing: 2px;
+        position: relative;
+        cursor: none;
+    }
+
+    .watcho {
+        color: #ff2e63; /* Main color for 'Watcho' */
+    }
+
+    .flix {
+        color: #000000; /* Dark color for 'Flix' */
+    }
+
+    .dark .flix {
+        color: #ffffff; /* White color for dark mode */
+    }
+
+    /* Video Player Styles */
+    #my-video-player {
+        aspect-ratio: 16 / 9;
+        border-radius: 5px;
+        overflow: hidden; /* Ensures content respects border radius */
+    }
+
+    #my-video-player video {
+        border-radius: 5px; /* Ensuring the video follows the same radius */
+    }
+
+    /* Android Play Button Styles */
+    #androidPlayBtn {
+        background-color: transparent;
+        color: #29AA35;
+        font-weight: bold;
+        border: 2px solid #29AA35;
+        padding: 10px 30px;
+        font-size: 15px;
+        border-radius: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    #androidPlayBtn:hover {
+        background-color: #008A46;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    #androidPlayBtn:active {
+        transform: scale(0.95);
+    } 
+
+    /* Light mode styles */
+#footer {
+    background-image: radial-gradient(circle at bottom left, #f5f5f5 12%, transparent 0%);
+}
+
+/* Dark mode styles */
+.dark #footer {
+    background-image: radial-gradient(circle at bottom left, #2e2e2e 12%, transparent 0%);
+} 
+
+/* Dark mode thumbnail overlay */
+.dark #thumbnail {
+    filter: brightness(0.8) contrast(1.1);
+}
+
+/* Optional: Add a smooth transition */
+#thumbnail {
+    transition: filter 0.3s ease;
+} 
+
+    
+/* Global Search bar Header styles */
+.search-bar-overlay {
+    position: fixed;
+    top: 60px;           /* adjust based on your header height */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 600px;
+
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    z-index: 9999;
+    display: none;       /* hidden by default */
+} 
+
+.dark .search-bar-overlay, .dark .search-form input {
+    background-color:#363636;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+    
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 10px 40px; /* space for icons */
+    padding-left: 38px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    font-size: 18px;
+}
+
+.clear-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    cursor: pointer;
+    color: #444;
+    opacity: 0.7;
+    display: none; /* hidden by default */
+}
+
+.clear-icon:hover {
+    opacity: 1;
+}
+</style>
 
 </head>
 
-<body class="bg-white text-black dark:bg-black dark:text-white">
+<body class="text-black dark:bg-black dark:text-white">
 
-	<header class="bg-blue-300 dark:bg-red-500 text-white mb-2 p-2 w-full shadow">
-		<div class="flex mx-auto justify-between items-center max-w-screen-xl">
-			<a href="/" id="title-a" class="text-left font-bold text-xl lg:text-2xl xl:text-3xl"> Telegram Indexer </a>
-			<div class="space-x-1">
-				<button onclick="toggleTheme()" class="rounded-full bg-white">
-        <img src="/icons/sun.png" class="h-8" alt="Theme">
-      </button>
-			{% if authenticated %}
-      <button class="rounded-full bg-white"><a href="/logout">
-      <img src="/icons/logout.png" class="h-8" alt="Logout">
-      </a>
-      </button>
-      {% else %} {% endif %}
-      </div>
-		</div>
+    <header class="bg-blue-300 dark:bg-gray-900 text-white mb-2 p-2 w-full shadow" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: inline-block;">
+        <div class="flex mx-auto justify-between items-center max-w-screen-xl"> 
 
-	</header>
-	<div class="m-auto w-full min-h-screen max-w-screen-xl">
+
+<!-- Header SideBar Menu open Button -->
+<a href="javascript:void(0);" onclick="openSidebar()" id="menu-btn" aria-label="Open Sidebar" class="text-black dark:text-gray-400 mr-2 ml-1">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4" height="27" width="27">
+  <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75ZM2 8a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 2 8Zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+</svg>
+</a>
+            
+            <!-- Site Title -->
+            <a href="/" id="title-a" class="text-left font-bold text-xl lg:text-2xl xl:text-3xl" style="margin-right: auto;">
+            <div class="watchoflix-logo">
+            <span class="watcho">Watcho</span> 
+           <span class="flix">Flix</span> 
+           </div>
+           </a> 
+
+            
+
+            <!-- Header Search icon  -->
+            <button class="search-bn h-9 w-9 flex items-center justify-center bg-white text-black dark:text-white dark:bg-gray-800" style="border: 1px solid #ccc; border-radius:5px; margin:2px; margin-left:10px; outline: none; -webkit-tap-highlight-color: transparent;" id="searchbtn" onclick="toggleSearch()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512.000000 512.000000" fill="currentColor">
+                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+fill="currentColor">
+                        <path d="M1950 5113 c-888 -67 -1645 -692 -1879 -1553 -145 -534 -60 -1135
+230 -1618 123 -204 336 -443 518 -582 290 -220 629 -363 986 -415 130 -19 407
+-22 540 -5 286 35 605 145 828 284 41 25 78 46 83 46 5 0 283 -274 619 -609
+426 -425 624 -616 655 -632 62 -31 158 -31 220 0 27 14 104 83 191 170 127
+127 148 153 164 200 21 65 17 131 -14 195 -17 35 -174 196 -637 654 l-614 609
+57 94 c151 251 248 540 283 848 16 136 8 444 -15 571 -94 522 -378 992 -786
+1305 -415 318 -929 476 -1429 438z m361 -839 c507 -82 921 -481 1034 -994 25
+-118 31 -325 11 -450 -64 -398 -305 -740 -658 -930 -180 -97 -338 -139 -551
+-147 -201 -8 -331 13 -512 82 -411 157 -722 541 -796 984 -15 85 -15 317 0
+402 98 580 579 1025 1153 1068 114 8 206 4 319 -15z"/>
+                    </g>
+                    <span class="sr-only">search</span>
+                </svg>
+            </button>
+
+            <!-- Header BookMark Btn -->
+            <button class="modal-btn dark:text-white dark:bg-gray-800" id="modalbtn" onclick="openModal()" style="border: 1px solid #ccc;"> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" height="22" width="22">
+                <path fill-rule="evenodd" d="M10 2c-1.716 0-3.408.106-5.07.31C3.806 2.45 3 3.414 3 4.517V17.25a.75.75 0 0 0 1.075.676L10 15.082l5.925 2.844A.75.75 0 0 0 17 17.25V4.517c0-1.103-.806-2.068-1.93-2.207A41.403 41.403 0 0 0 10 2Z" clip-rule="evenodd" />
+            </svg>
+                <span id="bookmarkCountBadge" class="badge">0</span> 
+            </button>
+
+            <!-- Header Theme toogle Btn -->
+            <div class="space-x-1" style="display: flex; gap: 1px;">
+                <button onclick="toggleTheme()" class="h-9 w-9 flex items-center justify-center theme-toggle bg-white dark:text-white dark:bg-gray-800" style="background-color: ##EEF7FF; border: 1px solid #ccc; border-radius:5px; margin:2px; margin-left:7px; outline: none; -webkit-tap-highlight-color: transparent;" aria-label="Toggle theme">
+    <span id="theme-icon">
+        <!-- Default icon to show on load -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" height="20" width="20">
+          <path fill-rule="evenodd" d="M7.455 2.004a.75.75 0 0 1 .26.77 7 7 0 0 0 9.958 7.967.75.75 0 0 1 1.067.853A8.5 8.5 0 1 1 6.647 1.921a.75.75 0 0 1 .808.083Z" clip-rule="evenodd" />
+        </svg>
+    </span>
+</button>
+                {% if authenticated %}
+                <button class="rounded-full bg-white h-9 w-9 flex items-center justify-center dark:text-white dark:bg-gray-800" style="background-color: ##EEF7FF; border-radius:5px; margin: 4px;">
+                    <a href="/logout">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+ class="text-1xl" width="19" height="19" fill="currentColor" viewBox="0 0 96.000000 96.000000">
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="red">
+<path d="M451 866 c-8 -9 -11 -69 -9 -191 3 -157 5 -179 20 -189 13 -8 23 -8
+35 0 16 10 18 32 21 189 3 183 -1 205 -38 205 -10 0 -23 -6 -29 -14z"/>
+<path d="M305 753 c-54 -28 -123 -104 -152 -167 -24 -52 -28 -74 -28 -146 0
+-72 4 -94 28 -146 36 -77 104 -145 182 -181 51 -24 73 -28 145 -28 72 0 94 4
+146 28 77 36 145 104 181 182 24 51 28 73 28 145 0 72 -4 94 -28 145 -48 104
+-162 199 -207 175 -28 -15 -25 -46 6 -67 96 -67 141 -134 151 -226 17 -161
+-115 -307 -277 -307 -118 0 -234 85 -266 195 -38 134 8 247 140 338 31 21 34
+52 7 67 -24 12 -19 13 -56 -7z"/>
+</g>
+</svg>
+                    </a>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="m-auto w-full min-h-screen max-w-screen-xl">
+    <!-- Your content will display here -->
+
+        
+    <!-- Global Search bar -->
+<div id="globalSearch" class="search-bar-overlay">
+    <form action="{{ url('global_search') }}" method="get" class="search-form">
+        <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="globalSearchInput" name="q"
+                   placeholder="Search all channels..." required>
+            <span class="clear-icon" onclick="clearSearch()">✖</span>
+        </div>
+    </form>
+</div>
+
+
+    <!-- Toast Notification Container -->
+<div id="toastContainer" class="toast-container"></div>
+
+<div id="bookmarkModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5>Saved Bookmarks</h5>
+            <span class="close" onclick="closeModal()"><span style="color: #aaa; font-size: 15px;">close</span> &times;</span>
+        </div>
+        <div class="modal-body" id="bookmarkList">
+            <!-- Bookmarks will be displayed here -->
+        </div>
+    </div>
+</div>

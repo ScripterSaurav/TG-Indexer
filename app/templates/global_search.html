@@ -1,0 +1,71 @@
+<link href="{{ url('static', filename='css/style.css') }}" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Main Content -->
+<div class="p-0 space-y-2" style="margin-top: 60px;">
+
+            
+            <div class="search-bar">
+                <form action="{{ url('global_search') }}" method="get" class="search-form">
+                    <input type="text" name="q" value="{{ search }}" placeholder="Search across all channels..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+    <main class="container">
+        {% if search %}
+            <p>Search results for: "<strong>{{ search }}</strong>"</p>
+        {% endif %}
+
+        {% if item_list %}
+        <div class="results-grid">
+            {% for item in item_list %}
+            <div class="result-item">
+                {% if item.media %}
+                <div class="thumbnail">
+                    <a href="{{ item.url }}">
+                        <img src="{{ item.thumbnail }}" alt="{{ item.insight }}" loading="lazy">
+                    </a>
+                </div>
+                {% endif %}
+                
+                <div class="item-info">
+                    <h3>
+                        <a href="{{ item.url }}">{{ item.insight }}</a>
+                    </h3>
+                    
+                    <div class="item-meta">
+                        {% if item.media %}
+                        <span class="file-size" style="border-radius: 25px; padding: 5px; color: white; background: #ec5d5c; font-weight: bold;">{{ item.human_size }}</span>
+                        {% endif %}
+                        <span class="channel-name">{{ item.channel_name }}</span>
+                    </div>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            {% if prev_page %}
+            <a href="{{ prev_page.url }}" class="page-link">← Previous</a>
+            {% endif %}
+            
+            <span class="current-page">Page {{ cur_page }}</span>
+            
+            {% if next_page %}
+            <a href="{{ next_page.url }}" class="page-link">Next →</a>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="no-results">
+            {% if search %}
+            <p>No results found for "{{ search }}". Try different keywords.</p>
+            {% else %}
+            <p>Enter a search term to find content across all channels.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </main>
+
+</div>
