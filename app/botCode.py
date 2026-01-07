@@ -9,7 +9,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from .config import api_id, api_hash  # Ensure your config contains these
 
 # ==== Configuration ====
-bot_token = "7275785607:AAE0cpHRj5IxenM0X_ywhHtnYzN9mVkJVjw"
+bot_token = "xxxxxxxx"
 channel_username = "moviesflixoo"  # Your Telegram channel
 DELETE_DELAY = 30  # ⏱ Time in seconds before file message is deleted
 # ========================
