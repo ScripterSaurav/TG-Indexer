@@ -11,12 +11,7 @@
 
 # 👀 Demo 
 
-<details>
-    <summary><b>Click Here For Demo</b></summary>
-
-<img width="90" src="images/HomePage.jpg">|<img width="90" src="images/IndexPage.jpg">|<img width="90" src="images/StreamPage.jpg">
-
-</details>
+👉 [Click Here To See](https://watchoflix.koyeb.app)
 
 ----
 
