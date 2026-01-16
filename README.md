@@ -32,6 +32,11 @@
 - 🎯 **Selective Indexing** - Choose specific chats or index all available
 
 
+## 👨‍🏫 Deploy Tutorial Video
+
+[![Watch the video](https://img.youtube.com/vi/RUfDh7c8qHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=RUfDh7c8qHg)
+
+
 ## 🚀 Quick Deploy
 
 ### Step-by-Step Deployment
