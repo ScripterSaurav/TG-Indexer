@@ -1,4 +1,4 @@
-# Telegram Indexer (Movie Web-App)
+## Telegram Indexer (Movie Web-App)
 
 > A powerful Python web application that indexes Telegram channels and chats, allowing you to browse, search, and download media files through a web interface.
 
@@ -20,13 +20,16 @@
 
 - [ ] Implement multi-client worker bots support
 - [ ] Add cache system support
-- [ ] Implement channel lock functionality
+- [x] Implement channel lock functionality
 
 ## ✨ Features
 
 - 🔍 **Smart Indexing** - Index one or multiple Telegram channels/chats
 - 📱 **Web Interface** - Browse messages and media files directly in your browser
 - 🔎 **Advanced Search** - Search through all indexed content
+- - 📡 **Multi Channel Index** - Index multiple channels simultaneously
+- 🖼️ **Thumbnail Support** - Channel profile thumbnails display
+- 🔐 **Login Support** - Secure user authentication
 - 📥 **Media Download** - Download files via browser or download managers
 - 🔒 **Authentication** - Optional username/password protection
 - 🎯 **Selective Indexing** - Choose specific chats or index all available
