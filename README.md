@@ -47,7 +47,9 @@
 
 - [x] Channel lock functionality  
 - [ ] Multi-client worker bot support  
-- [ ] Caching system  
+- [ ] Caching system
+- [ ] API Support
+- [ ] Admin Dashboard
 
 ---
 
