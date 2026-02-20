@@ -1,159 +1,226 @@
-## Telegram Indexer (Movie Web-App)
+<div align="center">
 
-> A powerful Python web application that indexes Telegram channels and chats, allowing you to browse, search, and download media files through a web interface.
+# 📽️ Telegram Indexer
+> ## Automatic Movie Web-App
+
+
+### A powerful web app to browse, search, and stream media from Telegram channels — right in your browser.
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![Telethon](https://img.shields.io/badge/Telethon-Library-green?logo=telegram)
 ![License](https://img.shields.io/badge/License-GPL-yellow)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
-----
+**[🌐 Live Demo](https://watchoflix.koyeb.app)** · **[📺 Deploy Tutorial](#-deploy-tutorial)** · **[🐛 Report a Bug](https://github.com/ScripterSaurav/tg-index/issues)**
 
-# 👀 Demo 
+</div>
 
-👉 [Click Here To See](https://watchoflix.koyeb.app)
+---
 
-----
+## 🖼️ Screenshots
 
+> 💡 *Add your own screenshots here — e.g., the homepage, search results, and media player views.*
 
-## 📋 To-Do List
+| Home / Browse | Search Results | Media Player |
+|:---:|:---:|:---:|
+| `screenshot_home.png` | `screenshot_search.png` | `screenshot_player.png` |
 
-- [ ] Implement multi-client worker bots support
-- [ ] Add cache system support
-- [x] Implement channel lock functionality
+---
 
 ## ✨ Features
 
-- 🔍 **Smart Indexing** - Index one or multiple Telegram channels/chats
-- 📱 **Web Interface** - Browse messages and media files directly in your browser
-- 🔎 **Advanced Search** - Search through all indexed content
-- - 📡 **Multi Channel Index** - Index multiple channels simultaneously
-- 🖼️ **Thumbnail Support** - Channel profile thumbnails display
-- 🔐 **Login Support** - Secure user authentication
-- 📥 **Media Download** - Download files via browser or download managers
-- 🔒 **Authentication** - Optional username/password protection
-- 🎯 **Selective Indexing** - Choose specific chats or index all available
+| Feature | Description |
+|---|---|
+| 🔍 Smart Indexing | Index one or multiple Telegram channels/chats |
+| 📱 Web Interface | Browse messages and media files directly in your browser |
+| 🔎 Advanced Search | Search through all indexed content instantly |
+| 📡 Multi-Channel | Index multiple channels simultaneously |
+| 🖼️ Thumbnails | Channel profile thumbnails displayed in-browser |
+| 🔐 Auth Support | Optional username/password login protection |
+| 📥 Media Download | Download files via browser or download managers |
+| 🎯 Selective Indexing | Choose specific chats or index everything at once |
+| 🔒 Channel Lock | Lock specific channels from public access |
 
+---
 
-## 👨‍🏫 Deploy Tutorial Video
+## 📋 Roadmap
+
+- [x] Channel lock functionality  
+- [ ] Multi-client worker bot support  
+- [ ] Caching system  
+
+---
+
+## 📺 Deploy Tutorial
 
 [![Watch the video](https://img.youtube.com/vi/RUfDh7c8qHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=RUfDh7c8qHg)
 
+---
 
-## 🚀 Quick Deploy
+## 🚀 Quick Start
 
-### Step-by-Step Deployment
+### 1. Clone the repository
 
-1️⃣. **Clone the repository**
 ```bash
 git clone https://github.com/odysseusmax/tg-index.git
 cd tg-index
 ```
 
-2️⃣. **Set up virtual environment**
+### 2. Set up a virtual environment
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
 
-3️⃣. **Install dependencies**
+### 3. Install dependencies
+
 ```bash
 pip install -U -r requirements.txt
 ```
 
-## ⚙️ Configuration
+### 4. Generate a Session String
 
-4️⃣. **Environment Variables**
+Run the included script and follow the prompts:
 
-| Variable Name                        | Value                                                                                                                                                          |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `API_ID` (required)                  | Telegram api_id obtained from <https://my.telegram.org/apps>.                                                                                                  |
-| `API_HASH` (required)                | Telegram api_hash obtained from <https://my.telegram.org/apps>.                                                                                                |
-| `INDEX_SETTINGS` (required)          | See the below description.                                                                                                                                     |
-| `SESSION_STRING` (required)          | String obtained by running `$ python3 app/generate_session_string.py`. (Login with the telegram account which is a participant of the given channel (or chat). |
-| `PORT` (optional)                    | Port on which app should listen to, defaults to 8080.                                                                                                          |
-| `HOST` (optional)                    | Host name on which app should listen to, defaults to 0.0.0.0.                                                                                                  |
-| `DEBUG` (optional)                   | Give `true` to set logging level to debug, info by default.                                                                                                    |
-| `BLOCK_DOWNLOADS` (optional)         | Enable downloads or not. If any value is provided, downloads will be disabled.                                                                                 |
-| `RESULTS_PER_PAGE` (optional)        | Number of results to be returned per page defaults to 20.                                                                                                      |
-| `TGINDEX_USERNAME` (optional)        | Username for authentication, defaults to `''`.                                                                                                                 |
-| `PASSWORD` (optional)                | Password for authentication, defaults to `''`.                                                                                                                 |
-| `SHORT_URL_LEN` (optional)           | Url length for aliases                                                                                                                                         |
-| `SESSION_COOKIE_LIFETIME` (optional) | Number of minutes, for which authenticated session is valid for, after which user has to login again. defaults to 60.                                          |
-| `SECRET_KEY` (optional)              | 32 characters long string for signing the session cookies, required if authentication is enabled.                                                              |
-
-### Generating Session String
-
-> Run the included script to generate your session string or use this tool
-
-[Telethon Session Generator tool](https://telegram.tools/session-string-generator#telethon,user)
-
-
-## Configuration Options:
-
-- `index_all` - Index all available chats (`true`/`false`)
-- `index_private` - Include private chats (requires `index_all: true`)
-- `index_group` - Include groups (requires `index_all: true`)
-- `index_channel` - Include channels (requires `index_all: true`)
-- `exclude_chats` - Array of chat IDs to exclude
-- `include_chats` - Array of specific chat IDs to index (requires `index_all: false`)
-
-
-## 🔧 Utility Scripts
-
-### Generate Secret Key
-
-```python
-import secrets
-import string
-
-def generate_secret_key():
-    characters = string.ascii_letters + string.digits + string.punctuation
-    secret_key = ''.join(secrets.choice(characters) for _ in range(32))
-    return secret_key
-
-print(generate_secret_key())
+```bash
+python3 app/generate_session_string.py
 ```
 
-## 🎯 Usage
+> 💡 Alternatively, use the [Telethon Session Generator](https://telegram.tools/session-string-generator#telethon,user) online tool.
 
-5️⃣. Start the application:
+### 5. Configure environment variables
+
+Create a `.env` file in the root directory (see [Configuration](#%EF%B8%8F-configuration) below).
+
+### 6. Start the app
 
 ```bash
 python3 -m app
 ```
 
-The web interface will be available at `http://localhost:8080` (or your configured host/port).
-
-
-## 🔒 Security Notes
-
-- Use the provided `generate_session_string.py` script for safe session generation
-- Always set a strong `SECRET_KEY` when enabling authentication
-- Consider using `BLOCK_DOWNLOADS` in public deployments
-- Regularly update dependencies for security patches
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
-
-## 🧑‍💻 Author & Credits
-
-Credit [odysseusmax](https://github.com/odysseusmax) for base repo: [tg-index](https://github.com/odysseusmax/tg-index) 
-
-**Fixed & Modified:** ✨ by [Me](https://github.com/ScripterSaurav)
-
-
-## **Help & Support**
-
-[![Telegram Username](https://img.shields.io/static/v1?label=&message=Telegram%20&color=blue&style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/webcoderhub)
-
-
-
-## 📄 License
-
-This project is licensed under the **The GNU General Public License** - see the [LICENSE](LICENSE) file for details.
+The app will be available at **http://localhost:8080** (or your configured host/port).
 
 ---
 
-**Note**: Make sure you have appropriate permissions to access and index the Telegram channels/chats you're targeting. Always comply with Telegram's Terms of Service and respect privacy guidelines.
+## ⚙️ Configuration
+
+### Required Variables
+
+| Variable | Description |
+|---|---|
+| `API_ID` | Telegram API ID from [my.telegram.org/apps](https://my.telegram.org/apps) |
+| `API_HASH` | Telegram API Hash from [my.telegram.org/apps](https://my.telegram.org/apps) |
+| `SESSION_STRING` | Generated by running `python3 app/generate_session_string.py` |
+| `INDEX_SETTINGS` | JSON config (see below) |
+
+### Optional Variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `PORT` | `8080` | Port the app listens on |
+| `HOST` | `0.0.0.0` | Host the app listens on |
+| `DEBUG` | `false` | Set to `true` for verbose logging |
+| `BLOCK_DOWNLOADS` | _(unset)_ | Set any value to disable downloads |
+| `RESULTS_PER_PAGE` | `20` | Number of results per page |
+| `TGINDEX_USERNAME` | `''` | Username for auth (leave blank to disable) |
+| `PASSWORD` | `''` | Password for auth (leave blank to disable) |
+| `SHORT_URL_LEN` | — | Length of alias URLs |
+| `SESSION_COOKIE_LIFETIME` | `60` | Session duration (minutes) |
+| `SECRET_KEY` | — | 32-char string for signing cookies (required if auth is enabled) |
+
+### INDEX_SETTINGS Options
+
+```json
+{
+  "index_all": false,
+  "index_private": false,
+  "index_group": false,
+  "index_channel": true,
+  "exclude_chats": [],
+  "include_chats": [-1001234567890]
+}
+```
+
+| Key | Description |
+|---|---|
+| `index_all` | Index all available chats (`true`/`false`) |
+| `index_private` | Include private chats (requires `index_all: true`) |
+| `index_group` | Include groups (requires `index_all: true`) |
+| `index_channel` | Include channels (requires `index_all: true`) |
+| `exclude_chats` | Array of chat IDs to exclude |
+| `include_chats` | Array of specific chat IDs to index (requires `index_all: false`) |
+
+### Generate a Secret Key
+
+```python
+import secrets, string
+
+chars = string.ascii_letters + string.digits + string.punctuation
+print(''.join(secrets.choice(chars) for _ in range(32)))
+```
+
+---
+
+## 🔒 Security Tips
+
+- Always set a strong, random `SECRET_KEY` when enabling login
+- Consider enabling `BLOCK_DOWNLOADS` for public-facing deployments
+- Only index channels/chats you have permission to access
+- Keep your `SESSION_STRING` private — treat it like a password
+- Regularly update your dependencies to patch security vulnerabilities
+
+---
+
+## ❓ Troubleshooting & FAQ
+
+**Q: The app starts but no media is showing up.**  
+A: Double-check your `INDEX_SETTINGS`. Make sure the `include_chats` IDs are correct and that the Telegram account used for the session is a member of those chats.
+
+**Q: I'm getting a `SESSION_STRING` error on startup.**  
+A: Regenerate your session string using `python3 app/generate_session_string.py`. Make sure you log in with the correct Telegram account.
+
+**Q: Downloads are not working.**  
+A: Make sure `BLOCK_DOWNLOADS` is not set in your environment. If it's set to any value, downloads will be disabled.
+
+**Q: How do I find my Telegram chat ID?**  
+A: Forward a message from the channel/group to [@userinfobot](https://t.me/userinfobot) or use a bot like [@username_to_id_bot](https://t.me/username_to_id_bot).
+
+**Q: Authentication isn't working after I set a username and password.**  
+A: Make sure you've also set a valid `SECRET_KEY` (32 characters). Auth won't function without it.
+
+**Q: Can I host this on a free cloud platform?**  
+A: Yes! The demo is hosted on [Koyeb](https://koyeb.com). Platforms like Railway, Render, and Fly.io also work well.
+
+---
+
+## 🤝 Contributing
+
+Contributions are always welcome! Feel free to:
+
+- 🐛 Open an issue for bugs or feature requests
+- 🔀 Submit a pull request with improvements
+- ⭐ Star the repo if you find it useful!
+
+---
+
+## 🧑‍💻 Credits
+
+- Base repo by [odysseusmax](https://github.com/odysseusmax) — [tg-index](https://github.com/odysseusmax/tg-index)
+- Fixed & enhanced by [ScripterSaurav](https://github.com/ScripterSaurav)
+
+---
+
+## 💬 Support
+
+[![Telegram](https://img.shields.io/static/v1?label=&message=Join%20on%20Telegram&color=blue&style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/webcoderhub)
+
+---
+
+## 📄 License
+
+Licensed under the **GNU General Public License**. See [LICENSE](LICENSE) for details.
+
+---
+
+> ⚠️ **Disclaimer:** Make sure you have the appropriate permissions to access and index any Telegram channels or chats. Always comply with [Telegram's Terms of Service](https://telegram.org/tos) and respect user privacy.
