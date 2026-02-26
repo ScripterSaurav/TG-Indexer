@@ -1,7 +1,7 @@
 <div align="center">
 
 # 📽️ Telegram Indexer
-> ## Automatic Movie Web-App
+> ### Automatic Movie Web-App
 
 
 ### A powerful web app to browse, search, and stream media from Telegram channels — right in your browser.
